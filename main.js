@@ -2,7 +2,7 @@ const mainContainer = document.querySelector("#mainContainer");
 
 const createCard = (img, name) => {
   const cardContainer = document.createElement("div");
-  cardContainer.classList.add("card");
+  cardContainer.classList.add("card", "d-flex", "w-100", "gap-3");
 
   const image = document.createElement("img");
   image.classList.add("card-image-top");
@@ -33,6 +33,8 @@ const getCharacters = () => {
       characters.forEach((character) => {
         let images = character.image;
         let names = character.name;
+        let cards = createCard(images, names);
+        mainContainer.appendChild(cards);
       });
     })
     .catch((error) => {
