@@ -1,3 +1,4 @@
+
 const charactersContainer=document.getElementById('charactersContainer');
 
 const characterCard= (character)=>{
@@ -42,8 +43,6 @@ fetch("https://rickandmortyapi.com/api/character")
 
 .then(resp=>resp.json())
 .then(data=>{
- 
-
     data.results.forEach(character => {
         characterCard(character);
     });
@@ -55,4 +54,3 @@ fetch("https://rickandmortyapi.com/api/character")
 }
 
 main();
-
