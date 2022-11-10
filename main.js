@@ -1,44 +1,49 @@
-const mainContainer = document.querySelector("#mainContainer");
+const charactersContainer = document.getElementById("charactersContainer");
 
-const createCard = (img, name) => {
-  const cardContainer = document.createElement("div");
-  cardContainer.classList.add("card", "d-flex", "w-100", "gap-3");
+const characterCard = (character) => {
+  const containerCard = document.createElement("div");
+  containerCard.classList.add("card", "col-4");
+  containerCard.setAttribute("style", "width:18rem");
 
-  const image = document.createElement("img");
-  image.classList.add("card-image-top");
-  image.src = img;
+  const characterImage = document.createElement("img");
+  characterImage.setAttribute("src", character.image);
+  characterImage.classList.add("card-img-top");
 
-  const div = document.createElement("div");
-  div.classList.add("card-body");
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
 
-  const h5 = document.createElement("h5");
-  h5.classList.add("card-title");
-  h5.innerText = name;
+  const cardText = document.createElement("p");
+  cardText.classList.add("card-text", "fw-bold");
+  cardText.innerText = character.name;
 
-  cardContainer.appendChild(div);
-  div.appendChild(image);
-  div.appendChild(h5);
+  const cardStatus = document.createElement("p");
+  cardStatus.classList.add("card-text");
+  cardStatus.innerText = character.status;
 
-  return cardContainer;
+  const cardSpecies = document.createElement("p");
+  cardSpecies.classList.add("card-text");
+  cardSpecies.innerText = character.species;
+
+  containerCard.appendChild(characterImage);
+  cardBody.appendChild(cardText);
+  cardBody.appendChild(cardStatus);
+  cardBody.appendChild(cardSpecies);
+
+  containerCard.appendChild(cardBody);
+  charactersContainer.appendChild(containerCard);
 };
 
-const getCharacters = () => {
+const main = () => {
   fetch("https://rickandmortyapi.com/api/character")
-    //http response in JSON format
-    .then((response) => response.json())
+    .then((resp) => resp.json())
     .then((data) => {
-      //store all characters in a variable
-      let characters = data.results;
-      //for each character, we retrieve the character's name and image
-      characters.forEach((character) => {
-        let images = character.image;
-        let names = character.name;
-        let cards = createCard(images, names);
-        mainContainer.appendChild(cards);
+      data.results.forEach((character) => {
+        characterCard(character);
       });
     })
     .catch((error) => {
       console.log(error);
     });
 };
-getCharacters();
+
+main();
