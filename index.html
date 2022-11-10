@@ -14,27 +14,21 @@
     <title>Rick & Morty</title>
   </head>
 
-  <body>
-    <nav>
-      <div class="d-flex">
-        <p>Docs</p>
-        <p>About</p>
-        <button>SUPPORT US</button>
+  <body class="bg-black bg-opacity-75">
+    <nav class="mt-4">
+      <div class="d-flex justify-content-end me-2 gap-4 align-items-center">
+        <button class="btn text-light">Docs</button>
+        <button class="btn text-light">About</button>
+        <button class="btn btn-outline-warning">SUPPORT US</button>
       </div>
     </nav>
-    <main>
-      <h1>The Rick and Morty API</h1>
-      <!-- 
-      <div id="cardBox" class="card" style="width: 18rem">
-        <img src="..." class="card-img-top" alt="..." />
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
-        </div>
-      </div> -->
+    <main class="">
+      <h1 class="d-flex justify-content-center text-light">
+        The Rick and Morty API
+      </h1>
+      <div class="container">
+        <div class="row gap-5 mt-5" id="charactersContainer"></div>
+      </div>
     </main>
 
     <script src="/main.js"></script>
